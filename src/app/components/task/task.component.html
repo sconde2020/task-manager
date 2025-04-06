@@ -1,0 +1,15 @@
+<div class="task-container">
+  <h2>Task List</h2>
+  <ul class="task-list">
+    <li *ngFor="let task of tasks" class="task-item">
+      <h3>
+        <a [routerLink]="['/tasks', task.id]" class="task-link">
+          {{ task.title }}
+          <strong [style.color]="task.done ? 'green' : 'red'">
+            {{ task.done ? 'Completed' : 'Pending' }}
+          </strong>
+        </a>
+      </h3>
+    </li>
+  </ul>
+</div>
