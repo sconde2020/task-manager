@@ -19,4 +19,12 @@ export class TaskService {
   deleteTask(taskId: number): Observable<void> {
     return this.apiService.delete<void>(`${this.endpoint}/${taskId}`);
   }
+
+  createTask(task: any): Observable<any> {
+    return this.apiService.post<any>(this.endpoint, task);
+  }
+
+  updateTask(taskId: number, task: any): Observable<any> {
+    return this.apiService.put<any>(`${this.endpoint}/${taskId}`, task);
+  }
 }

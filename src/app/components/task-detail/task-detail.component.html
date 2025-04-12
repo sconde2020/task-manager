@@ -4,6 +4,7 @@
     <p>Status: <strong [style.color]="task.done ? 'green' : 'red'">
         {{ task.done ? 'Completed' : 'Pending' }}</strong>
     </p>
-    <button (click)="deleteTask(task.id)" class="delete-button">Delete</button>
     <button routerLink="/tasks" class="back-button">⬅ Back to Task List</button>
+    <button class="edit-button" [routerLink]="['/tasks', task?.id, 'edit']">✏️ Edit Task</button>
+    <button (click)="deleteTask(task.id)" class="delete-button">Delete</button>
 </div>

@@ -1,15 +1,24 @@
 <div class="task-container">
   <h2>Task List</h2>
-  <ul class="task-list">
-    <li *ngFor="let task of tasks" class="task-item">
-      <h3>
+
+  <button routerLink="/tasks/new" class="add-task-button">
+    <span class="material-symbols-outlined">add</span>
+    Add New Task
+  </button>
+
+  <mat-list class="task-list">
+    <mat-list-item *ngFor="let task of tasks" class="task-item">
+      <div mat-line class="task-title-line">
         <a [routerLink]="['/tasks', task.id]" class="task-link">
-          {{ task.title }}
-          <strong [style.color]="task.done ? 'green' : 'red'">
-            {{ task.done ? 'Completed' : 'Pending' }}
-          </strong>
+          <strong>{{ task.title }}</strong>
         </a>
-      </h3>
-    </li>
-  </ul>
+      </div>
+      <div mat-line class="status-line">
+        Status:
+        <span [ngStyle]="{ color: task.done ? 'green' : 'red' }">
+          {{ task.done ? 'Completed' : 'Pending' }}
+        </span>
+      </div>
+    </mat-list-item>
+  </mat-list>
 </div>

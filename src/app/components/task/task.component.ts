@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { ApiService } from '../../core/services/api.service';
+import { RouterModule } from '@angular/router';
 import { TaskService } from '../../core/services/task.service';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-task',
   imports: [
     CommonModule,
-    RouterModule 
+    RouterModule,
+    MatListModule,
+    MatDividerModule 
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
@@ -17,7 +19,7 @@ import { TaskService } from '../../core/services/task.service';
 export class TaskComponent {
   tasks: any[] = [];
 
-  constructor(private taskService: TaskService, private router: Router) {}
+  constructor(private taskService: TaskService) {}
 
   ngOnInit() {
     this.taskService.getAllTasks().subscribe(data => this.tasks = data);
