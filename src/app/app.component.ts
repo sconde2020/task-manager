@@ -1,25 +1,33 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   template: `
+    <mat-toolbar class="custom-navbar">
+      <span class="logo">📝 Task Manager</span>
+      <span class="spacer"></span>
+      <a mat-button routerLink="/login"><mat-icon>login</mat-icon> Login</a>
+      <a mat-button routerLink="/tasks"><mat-icon>list</mat-icon> Tasks</a>
+      <a mat-button routerLink="/logout"><mat-icon>logout</mat-icon> Logout</a>
+    </mat-toolbar>
+
     <div class="container">
-      <nav>
-        <a routerLink="/login">Login</a>
-        <a routerLink="/tasks">Tasks</a>
-        <a routerLink="/logout">Logout</a>
-      </nav>
       <router-outlet></router-outlet>
     </div>
   `,
-  styles: [`
-    .container { display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 20px;}
-    nav { display: flex; gap: 20px; padding: 10px; background: #eee; }
-    a { text-decoration: none; font-weight: bold; }
-  `]
+  styleUrl: './app.component.css'
 })
 export class AppComponent {}

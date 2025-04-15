@@ -24,9 +24,14 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.authService.login(this.loginForm.value).subscribe(response => {
-      localStorage.setItem('token', response.token);
-      this.router.navigate(['/tasks']);
-    }, () => alert('Login failed'));
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (response) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/tasks']);
+      },
+      error: () => {
+        alert('Login failed');
+      }
+    });
   }
 }

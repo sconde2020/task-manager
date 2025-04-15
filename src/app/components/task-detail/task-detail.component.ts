@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TaskService } from '../../core/services/task.service';
+import { Task } from '../../core/models/task';
 
 @Component({
   selector: 'app-task-detail',
@@ -10,7 +11,7 @@ import { TaskService } from '../../core/services/task.service';
   styleUrl: './task-detail.component.css'
 })
 export class TaskDetailComponent {
-  task: any;
+  task!: Task;
 
   constructor(
     private router: Router,

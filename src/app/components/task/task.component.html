@@ -1,24 +1,33 @@
 <div class="task-container">
-  <h2>Task List</h2>
+  <div class="task-header">
+    <h2>Task List</h2>
+    <button routerLink="/tasks/new" class="add-task-button">
+      <span class="material-symbols-outlined">add</span>
+      Add New
+    </button>
+  </div>
 
-  <button routerLink="/tasks/new" class="add-task-button">
-    <span class="material-symbols-outlined">add</span>
-    Add New Task
-  </button>
-
-  <mat-list class="task-list">
-    <mat-list-item *ngFor="let task of tasks" class="task-item">
-      <div mat-line class="task-title-line">
+  <div class="task-list-container">  
+    <mat-card *ngFor="let task of tasks" class="task-card" appearance="outlined">
+      <mat-card-title>
         <a [routerLink]="['/tasks', task.id]" class="task-link">
           <strong>{{ task.title }}</strong>
         </a>
-      </div>
-      <div mat-line class="status-line">
-        Status:
-        <span [ngStyle]="{ color: task.done ? 'green' : 'red' }">
-          {{ task.done ? 'Completed' : 'Pending' }}
-        </span>
-      </div>
-    </mat-list-item>
-  </mat-list>
+      </mat-card-title>
+  
+      <mat-card-content>
+        <p>Status:
+          <span class="task-status" [ngClass]="{ 'done': task.done, 'pending': !task.done }">
+            {{ task.done ? 'Completed' : 'Pending' }}
+          </span>
+        </p>
+        <p>Creation :
+          <span>{{ task.createdAt ? (task.createdAt | date:'yyyy-MM-dd') : 'Not set' }}</span>
+        </p>
+        <p>Last Update:
+          <span>{{ task.updatedAt ? (task.updatedAt | date:'yyyy-MM-dd') : 'Not set' }}</span>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

@@ -46,6 +46,7 @@ export class TaskNewComponent implements OnInit {
       this.isEditMode = true;
       this.taskId = +id;
       this.taskService.getTaskById(this.taskId).subscribe(task => {
+        // Pre-fill the form with the previous values
         this.taskForm.patchValue(task);
       });
     }
@@ -54,12 +55,20 @@ export class TaskNewComponent implements OnInit {
   onSubmit(): void {
     if (this.taskForm.invalid) return;
 
+    const now = new Date().toISOString();
+
+    const taskData = {
+      ...this.taskForm.value,
+      updatedAt: now,
+      ...(this.isEditMode ? {} : { createdAt: now })
+    };
+
     if (this.isEditMode && this.taskId != null) {
-      this.taskService.updateTask(this.taskId, this.taskForm.value).subscribe(() => {
+      this.taskService.updateTask(this.taskId, taskData).subscribe(() => {
         this.router.navigate(['/tasks']);
       });
     } else {
-      this.taskService.createTask(this.taskForm.value).subscribe(() => {
+      this.taskService.createTask(taskData).subscribe(() => {
         this.router.navigate(['/tasks']);
       });
     }
