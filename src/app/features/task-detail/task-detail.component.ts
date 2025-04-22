@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TaskService } from '../../core/services/task.service';
-import { Task } from '../../core/models/task';
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'app-task-detail',
