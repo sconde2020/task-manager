@@ -1,8 +1,20 @@
 .task-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Add button goes to the right */
   align-items: center;
-  padding: 0 16px 16px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  padding: 0 8px 8px;
+}
+
+.task-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.task-controls mat-form-field {
+  width: 200px; /* control consistent field width */
 }
 
 .add-task-button {
@@ -17,6 +29,7 @@
   gap: 4px;
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap; /* Prevent button text from breaking */
 }
 
 .add-task-button:hover {
@@ -31,7 +44,7 @@
 }
 
 .task-card {
-  padding: 8px;
+  padding: 16px;
   border-radius: 12px;
   transition: box-shadow 0.3s ease-in-out;
 }
@@ -61,3 +74,21 @@
 .task-status.pending {
   color: red;
 }
+
+.pagination-controls {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  gap: 16px; /* Space between buttons and page number */
+  margin: 24px 0; /* Margin above and below pagination controls */
+}
+
+.pagination-controls button {
+  min-width: 100px;
+}
+
+.pagination-controls span {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+

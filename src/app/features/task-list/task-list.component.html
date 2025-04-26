@@ -1,0 +1,53 @@
+<div class="task-container">
+  <div class="task-header">
+    <div class="task-controls">
+      <mat-form-field appearance="outline" class="task-form-field">
+        <mat-label>Search Tasks</mat-label>
+        <input matInput (input)="onSearch($event)" placeholder="Enter title..." />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="task-form-field">
+        <mat-label>Sort By</mat-label>
+        <mat-select (selectionChange)="onSort($event)">
+          <mat-option value="title">Title</mat-option>
+          <mat-option value="createdAt">Creation Date</mat-option>
+          <mat-option value="updatedAt">Last Updated</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="pagination-controls">
+      <button mat-button (click)="previousPage()" [disabled]="currentPage === 0"><span>Previous</span></button>
+      <button mat-button (click)="nextPage()" [disabled]="(currentPage + 1) * pageSize >= tasks.length"><span>Next</span></button>
+    </div>    
+
+    <button mat-flat-button color="primary" routerLink="/tasks/new" class="add-task-button">
+      <span class="material-symbols-outlined">add</span>
+      Add New
+    </button>
+  </div>
+
+  <div class="task-list-container">
+    <mat-card *ngFor="let task of filteredTasks" class="task-card" appearance="outlined">
+      <mat-card-title>
+        <a [routerLink]="['/tasks', task.id]" class="task-link">
+          <strong>{{ task.title }}</strong>
+        </a>
+      </mat-card-title>
+
+      <mat-card-content>
+        <p>Status:
+          <span class="task-status" [ngClass]="{ 'done': task.done, 'pending': !task.done }">
+            {{ task.done ? 'Completed' : 'Pending' }}
+          </span>
+        </p>
+        <p>Creation:
+          <span>{{ task.createdAt ? (task.createdAt | date:'yyyy-MM-dd') : 'Not set' }}</span>
+        </p>
+        <p>Last Update:
+          <span>{{ task.updatedAt ? (task.updatedAt | date:'yyyy-MM-dd') : 'Not set' }}</span>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
