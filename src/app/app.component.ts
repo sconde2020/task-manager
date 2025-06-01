@@ -16,21 +16,7 @@ import { AuthService } from './core/services/auth.service';
     MatButtonModule,
     MatIconModule
   ],
-  template: `
-    <mat-toolbar class="custom-navbar">
-      <span class="logo">📝 Task Manager</span>
-      <span class="spacer"></span>
-      <a mat-button routerLink="/login"><mat-icon>login</mat-icon> Login</a>
-      <a mat-button routerLink="/tasks"><mat-icon>list</mat-icon> Tasks</a>
-      <button mat-stroked-button color="warn" (click)="onLogout()">
-         <mat-icon>logout</mat-icon> Logout
-      </button>
-    </mat-toolbar>
-
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-  `,
+  templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {

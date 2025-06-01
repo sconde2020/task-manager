@@ -3,6 +3,7 @@
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
+
     <mat-card-content>
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <mat-form-field appearance="fill" class="full-width">
@@ -20,5 +21,15 @@
         </div>
       </form>
     </mat-card-content>
+
+    <div class="divider-wrapper">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="alternative-section">
+      <h3>Don't have an account ?</h3>
+      <button mat-stroked-button color="primary" routerLink="/register">
+        Create an account
+      </button>
+    </div>
   </mat-card>
 </div>

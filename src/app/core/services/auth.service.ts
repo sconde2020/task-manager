@@ -9,6 +9,10 @@ export class AuthService {
 
   constructor(private apiService: ApiService, private router: Router) {}
 
+  register(credentials: { username: string; password: string }): Observable<any> {
+    return this.apiService.post(`${this.basePath}/register`, credentials);
+  }
+  
   login(credentials: { username: string; password: string }): Observable<{ token: string }> {
     return this.apiService.post(`${this.basePath}/login`, credentials);
   }

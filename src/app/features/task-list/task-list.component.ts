@@ -33,7 +33,7 @@ export class TaskListComponent {
   searchTerm: string = '';
   sortBy: string = '';
   currentPage = 0;
-  pageSize = 5;
+  pageSize = 6;
   
   constructor(private taskService: TaskService) {}
 
