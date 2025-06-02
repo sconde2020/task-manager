@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { LoginComponent } from './features/login/login.component';
-import { TaskDetailComponent } from './features/task-detail/task-detail.component';
-import { TaskNewComponent } from './features/task-new/task-new.component';
-import { TaskListComponent } from './features/task-list/task-list.component';
-import { RegisterComponent } from './features/register/register.component';
+import { LoginComponent } from './features/authentication/login/login.component';
+import { RegisterComponent } from './features/authentication/register/register.component';
+import { TaskDetailComponent } from './features/task/task-detail/task-detail.component';
+import { TaskListComponent } from './features/task/task-list/task-list.component';
+import { TaskNewComponent } from './features/task/task-new/task-new.component';
 
 
 export const routes: Routes = [

@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  private readonly excludedPaths = ['/register', '/login'];
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('token');  
-    if (token) {
-      const cloned = req.clone({
-        setHeaders: { Authorization: `Bearer ${token}` }
-      });
-      return next.handle(cloned);
+    if (this.isExcluded(req.url)) {
+      return next.handle(req);
     }
 
-    return next.handle(req);
+    const token = localStorage.getItem('token');
+    const authReq = token
+      ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
+      : req;
+
+    return next.handle(authReq);
+  }
+
+  private isExcluded(url: string): boolean {
+    return this.excludedPaths.some(path => url.includes(path));
   }
 }
-
