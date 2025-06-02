@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -10,16 +10,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 100vh;
     padding-top: 60px; /* adjust this to move the form higher or lower */
   }  
-  
-mat-card {
-    width: 100%;
-    max-width: 400px;
-    padding: 24px;
-}
-  
-.full-width {
-    width: 100%;
-}
   
 .button-row {
     display: flex;
