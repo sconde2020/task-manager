@@ -17,8 +17,17 @@
     </div>
 
     <div class="pagination-controls">
-      <button mat-button (click)="previousPage()" [disabled]="currentPage === 0"><span>Previous</span></button>
-      <button mat-button (click)="nextPage()" [disabled]="(currentPage + 1) * pageSize >= tasks.length"><span>Next</span></button>
+      <mat-form-field appearance="outline" class="pagination-form-field">
+        <mat-label>Items per page</mat-label>
+        <mat-select [(value)]="pageSize" (selectionChange)="onPageSizeChange($event)">
+          <mat-option [value]="5">5</mat-option>
+          <mat-option [value]="10">10</mat-option>
+          <mat-option [value]="20">20</mat-option>
+          <mat-option [value]="50">50</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-button (click)="onPreviousPage()" [disabled]="currentPage === 0"><span>Previous</span></button>
+      <button mat-button (click)="onNextPage()" [disabled]="(currentPage + 1) * pageSize >= tasks.length"><span>Next</span></button>
     </div>    
 
     <button mat-flat-button color="primary" routerLink="/tasks/new" class="add-task-button">

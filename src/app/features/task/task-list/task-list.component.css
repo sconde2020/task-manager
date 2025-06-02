@@ -38,13 +38,40 @@
 
 .task-list-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 8px;
-  padding: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 32px;
+  padding: 32px;
+  max-height: calc(2 * 350px + 32px); /* Adjust 350px to your card height if needed */
+  overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+  .task-list-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .task-list-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .task-list-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    padding: 8px;
+    gap: 16px;
+    max-height: none;
+  }
 }
 
 .task-card {
-  padding: 16px;
+  padding: 32px;
   border-radius: 12px;
   transition: box-shadow 0.3s ease-in-out;
 }
@@ -77,18 +104,12 @@
 
 .pagination-controls {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  gap: 16px; /* Space between buttons and page number */
-  margin: 24px 0; /* Margin above and below pagination controls */
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap; /* Allow wrapping if needed */
 }
 
-.pagination-controls button {
-  min-width: 100px;
+.pagination-form-field {
+  min-width: 140px; /* Increase width for label */
+  flex-shrink: 0;
 }
-
-.pagination-controls span {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-

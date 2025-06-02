@@ -39,7 +39,6 @@ export class TaskListComponent {
 
   ngOnInit() {
     this.taskService.getAllTasks().subscribe(data => {
-      console.log(JSON.stringify(data));
       this.tasks = data;
       this.filteredTasks = this.tasks;
       this.paginate();
@@ -85,14 +84,14 @@ export class TaskListComponent {
     this.paginate(); // 👉 after filtering/sorting, apply pagination
   }
 
-  previousPage(): void {
+  onPreviousPage(): void {
     if (this.currentPage > 0) {
       this.currentPage--;
       this.applyFilters();
     }
   }
   
-  nextPage(): void {
+  onNextPage(): void {
     if ((this.currentPage + 1) * this.pageSize < this.tasks.length) {
       this.currentPage++;
       this.applyFilters();
@@ -105,4 +104,9 @@ export class TaskListComponent {
     this.filteredTasks = this.filteredTasks.slice(start, end);
   }
   
+  onPageSizeChange(event: any): void {
+    this.pageSize = event.value;
+    this.currentPage = 0; // Reset to first page when page size changes
+    this.applyFilters(); // Update the displayed tasks if needed
+  }
 }
