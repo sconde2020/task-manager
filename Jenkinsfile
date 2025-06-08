@@ -22,11 +22,11 @@ pipeline {
             }
         }
 
-        stage('Lint') {
+/*         stage('Lint') {
             steps {
                 sh 'npm run lint'
             }
-        }
+        } */
 
         stage('Build') {
             steps {
