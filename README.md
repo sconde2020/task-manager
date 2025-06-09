@@ -1,7 +1,6 @@
-# TaskApp
-
 [![Build Status](https://8993-2001-861-36c1-be50-a2bd-b626-e759-786d.ngrok-free.app/job/task-manager-pipeline/badge/icon)](https://8993-2001-861-36c1-be50-a2bd-b626-e759-786d.ngrok-free.app/job/task-manager-pipeline/)
 
+# TaskApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
 
