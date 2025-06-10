@@ -30,7 +30,7 @@ module.exports = function (config) {
     autoWatch: true,
 
     // Add here browsers you want locally
-    browsers: ['Chrome'], // or 'Safari' if on Mac
+    browsers: ['Chrome', 'ChromeHeadlessNoSandbox'], // or 'Safari' if on Mac
 
     // Keep your custom launcher for headless Chrome
     customLaunchers: {
