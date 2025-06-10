@@ -18,6 +18,7 @@ const mockEditTask: Task = {
 };
 
 const mockNewTask: Task = {
+  id: undefined,
   title: 'New Task',
   description: 'Desc',
   priority: 'LOW',
