@@ -17,7 +17,7 @@ export class TaskService {
     return this.apiService.get<Task>(`${this.endpoint}/${taskId}`);
   }
 
-  deleteTask(taskId: number): Observable<void> {
+  deleteTask(taskId: number | undefined): Observable<void> {
     return this.apiService.delete<void>(`${this.endpoint}/${taskId}`);
   }
 

@@ -34,15 +34,14 @@ registerForm!: FormGroup;
     private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
-
-  ngOnInit() {
-    this.registerForm = this.fb.group({
+  ) 
+  {
+     this.registerForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
-
+ 
   onSubmit() {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
@@ -58,7 +57,7 @@ registerForm!: FormGroup;
         },
         error: () => {
           this.snackBar.open('Registration failed.', '', {
-            duration: 3000,
+            duration: 2000,
             panelClass: ['snackbar-error'], 
           });
         }

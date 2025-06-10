@@ -18,9 +18,16 @@ export class AuthService {
   }
 
   logout(): void {
-    this.apiService.post(`${this.basePath}/logout`, {}).subscribe(() => {
-      localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+    this.apiService.post(`${this.basePath}/logout`, {}).subscribe({
+      next: () => {
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.error('Logout failed:', err);
+        localStorage.removeItem('token'); // Ensure token is removed even on error
+        this.router.navigate(['/login']);
+      }
     });
   }
 

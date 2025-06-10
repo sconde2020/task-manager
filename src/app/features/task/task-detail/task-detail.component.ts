@@ -26,7 +26,7 @@ export class TaskDetailComponent {
     });
   }
   
-  deleteTask(taskId: number): void {
+  deleteTask(taskId: number | undefined): void {
     const confirmed = window.confirm('Are you sure you want to delete this task?');
     if (!confirmed) return;
   

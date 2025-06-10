@@ -92,16 +92,11 @@ export class TaskListComponent {
   }
   
   onNextPage(): void {
-    if ((this.currentPage + 1) * this.pageSize < this.tasks.length) {
+    const totalPages = Math.ceil(this.tasks.length / this.pageSize);
+    if (this.currentPage < totalPages - 1) {
       this.currentPage++;
       this.applyFilters();
     }
-  }
-  
-  paginate(): void {
-    const start = this.currentPage * this.pageSize;
-    const end = start + this.pageSize;
-    this.filteredTasks = this.filteredTasks.slice(start, end);
   }
   
   onPageSizeChange(event: any): void {
@@ -109,4 +104,11 @@ export class TaskListComponent {
     this.currentPage = 0; // Reset to first page when page size changes
     this.applyFilters(); // Update the displayed tasks if needed
   }
+
+  private paginate(): void {
+    const start = this.currentPage * this.pageSize;
+    const end = start + this.pageSize;
+    this.filteredTasks = this.filteredTasks.slice(start, end);
+  }
+  
 }
