@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { CustomJwtUtils } from '../utils/custom-jwt.utils';
 
 
 @Injectable({ providedIn: 'root' })
@@ -17,9 +17,10 @@ export class AuthGuard implements CanActivate {
     }
 
     try {
-      const decoded: JwtPayload = jwtDecode(token);
+      const decoded = CustomJwtUtils.decodeToken(token);
+      
       const now = Date.now().valueOf() / 1000;
-
+     
       if (decoded.exp && decoded.exp < now) {
         // Token expired
         localStorage.removeItem('token');
