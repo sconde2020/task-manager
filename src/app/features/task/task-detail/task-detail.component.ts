@@ -32,7 +32,6 @@ export class TaskDetailComponent {
   
     this.taskService.deleteTask(taskId).subscribe({
       next: () => {
-        console.log("Task deleted!");
         this.router.navigate(['/tasks']);
       },
       error: (error) => {

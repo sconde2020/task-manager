@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { TaskService } from '../../../core/services/task.service';
+import { Task } from '../../../models/task';
 
 @Component({
   selector: 'app-task-new',
@@ -66,20 +67,20 @@ export class TaskNewComponent implements OnInit {
 
     const now = new Date().toISOString();
 
-    const taskData = {
+    const taskData: Task = {
       ...this.taskForm.value,
       updatedAt: now,
       ...(this.isEditMode ? {} : { createdAt: now })
     };
 
-    console.log('Task Data:', JSON.stringify(taskData, null, 2));
-
     if (this.isEditMode && this.taskId != null) {
-      this.taskService.updateTask(this.taskId, taskData).subscribe(() => {
+      this.taskService.updateTask(this.taskId, taskData)
+      .subscribe(() => {
         this.router.navigate(['/tasks']);
       });
     } else {
-      this.taskService.createTask(taskData).subscribe(() => {
+      this.taskService.createTask(taskData)
+      .subscribe(() => {
         this.router.navigate(['/tasks']);
       });
     }
@@ -88,4 +89,5 @@ export class TaskNewComponent implements OnInit {
   onCancel(): void {
     this.router.navigate(['/tasks']);
   }
+  
 }
