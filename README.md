@@ -1,4 +1,4 @@
-[![Build Status](https://2b42-2001-861-36c1-be50-9457-c497-14fa-d508.ngrok-free.app/job/task-manager-pipeline/badge/icon)](https://2b42-2001-861-36c1-be50-9457-c497-14fa-d508.ngrok-free.app/job/task-manager-pipeline/)
+[![Build Status](https://lucky-earwig-bold.ngrok-free.app/job/task-manager-pipeline/badge/icon)](https://lucky-earwig-bold.ngrok-free.app/job/task-manager-pipeline/)
 
 # TaskApp
 
